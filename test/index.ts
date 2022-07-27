@@ -37,5 +37,10 @@ describe("PixelGrid", () => {
     expect(tokenURI).to.equal(
       baseURI + "QmPf2x91DoemnhXSZhGDP8TX9Co8AScpvFzTuFt9BGAoBY"
     );
+
+    const tx2 = await pixelGrid.changeTokenURI("1", "gm");
+    await tx2.wait();
+    const newTokenURI = await pixelGrid.tokenURI(tokenId);
+    expect(newTokenURI).to.equal(baseURI + "gm");
   });
 });
